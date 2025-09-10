@@ -6,8 +6,10 @@ import gc
 # Danh sách vector store và model tương ứng
 vector_stores = [
     {"model_name": "intfloat/multilingual-e5-large-instruct", "folder": "vector_db_e5_large"},
-    {"model_name": "hiieu/halong_embedding", "folder": "vector_db_halong"}
+    {"model_name": "hiieu/halong_embedding", "folder": "vector_db_halong"},
+    {"model_name": "AITeamVN/Vietnamese_Embedding", "folder": "vector_db_aiteam"}
 ]
+
 
 # Câu query
 query = "Làm thế nào để nhập dữ liệu từ bàn phím trong Java?"
@@ -41,5 +43,6 @@ for store_info in vector_stores:
     for r in docs:
         print(r.page_content[:])  # In 500 ký tự đầu
         print("-" * 80)
+
 
 print("All vector stores have been tested successfully!")
