@@ -20,8 +20,9 @@ docs = text_splitter.split_documents(documents)
 vector_stores = [
     {"model_name": "intfloat/multilingual-e5-large-instruct", "folder": "vector_db_e5_large"},
     {"model_name": "hiieu/halong_embedding", "folder": "vector_db_halong"},
-    # {"name": "AITeamVN/Vietnamese_Embedding", "folder": "vector_db_aiteam", "device": "cuda"}
+    {"model_name": "AITeamVN/Vietnamese_Embedding", "folder": "vector_db_aiteam"}
 ]
+
 
 
 # Tạo và lưu vector store cho từng model
@@ -50,3 +51,4 @@ for model_info in models:
 
 
 print("All vector stores have been created and saved successfully!")
+
