@@ -12,7 +12,7 @@ vector_stores = [
 
 
 # Câu query
-query = "Làm thế nào để nhập dữ liệu từ bàn phím trong Java?"
+query = "Chuỗi String trong Java là kiểu dữ liệu cơ bản hay kiểu dữ liệu dẫn xuất?"
 
 # Test từng vector store
 for store_info in vector_stores:
@@ -46,3 +46,4 @@ for store_info in vector_stores:
 
 
 print("All vector stores have been tested successfully!")
+
