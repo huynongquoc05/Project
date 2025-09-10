@@ -16,11 +16,13 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 docs = text_splitter.split_documents(documents)
 
-# Danh sách các model và thư mục lưu vector store (đã loại bỏ model cuối)
-models = [
-    {"name": "intfloat/multilingual-e5-large-instruct", "folder": "vector_db_e5_large"},
-    {"name": "hiieu/halong_embedding", "folder": "vector_db_halong"},
+# Danh sách vector store và model tương ứng
+vector_stores = [
+    {"model_name": "intfloat/multilingual-e5-large-instruct", "folder": "vector_db_e5_large"},
+    {"model_name": "hiieu/halong_embedding", "folder": "vector_db_halong"},
+    # {"name": "AITeamVN/Vietnamese_Embedding", "folder": "vector_db_aiteam", "device": "cuda"}
 ]
+
 
 # Tạo và lưu vector store cho từng model
 for model_info in models:
@@ -45,5 +47,6 @@ for model_info in models:
     # Lưu vector store
     db.save_local(save_path)
     print(f"Vector store for {model_name} saved to {save_path}")
+
 
 print("All vector stores have been created and saved successfully!")
