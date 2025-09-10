@@ -21,9 +21,6 @@ for store_info in vector_stores:
 
     print(f"\n=== Testing vector store for {model_name} (folder: {folder}) ===")
 
-    # Giải phóng bộ nhớ GPU trước khi load
-    torch.cuda.empty_cache()
-    gc.collect()
 
     # Load embeddings cho model
     embeddings = HuggingFaceEmbeddings(
@@ -46,4 +43,5 @@ for store_info in vector_stores:
 
 
 print("All vector stores have been tested successfully!")
+
 
