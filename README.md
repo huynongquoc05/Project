@@ -73,3 +73,51 @@ stateDiagram-v2
     
     GenerateSummary --> [*]
 
+
+### 🏗️ Ý nghĩa trạng thái & cách vận hành
+
+**Level của thí sinh (`InterviewState.level`)**
+
+- Quy định điểm xuất phát.  
+- Ví dụ:  
+  - `yeu` → bắt đầu từ `very_easy`.  
+  - `kha` → bắt đầu từ `medium`.  
+  - `gioi` → bắt đầu từ `hard`.  
+
+**Level câu hỏi (`InterviewState.current_difficulty`)**
+
+- Thay đổi động sau mỗi câu hỏi:  
+  - Điểm **>=7** → nâng độ khó.  
+  - Điểm **4–6.5** → giữ nguyên.  
+  - Điểm **<4** → giảm độ khó.  
+
+**Quy trình phỏng vấn**
+
+1. Xác định level thí sinh → chọn độ khó khởi tạo.  
+2. Sinh câu hỏi từ **FAISS + LLM**.  
+3. Nhận câu trả lời.  
+4. Chấm điểm + phân tích.  
+5. Quyết định hành động tiếp theo (`harder/same/easier`).  
+6. Lặp lại cho đến khi đạt điều kiện kết thúc.  
+7. Xuất báo cáo tổng kết.  
+
+---
+
+### 🔚 Điều kiện kết thúc phỏng vấn
+
+Quá trình sẽ dừng lại khi một trong các điều kiện sau xảy ra:
+
+1. **Số câu hỏi ở cùng một độ khó đạt giới hạn**  
+   - Mỗi độ khó chỉ cho phép tối đa **2 câu liên tiếp**.  
+
+2. **Số lượng câu hỏi tổng cộng vượt ngưỡng**  
+   - Buổi phỏng vấn không kéo dài quá **8 câu hỏi**.  
+
+3. **Số lần nâng cấp độ khó vượt ngưỡng**  
+   - Chỉ cho phép tăng độ khó tối đa **2 lần** so với ban đầu.  
+   - Ví dụ: `easy → medium → hard`.  
+
+4. **Người dùng chủ động dừng**  
+   - Có thể nhấn `Ctrl + C` để kết thúc sớm.  
+
+Khi kết thúc, hệ thống tổng hợp toàn bộ **lịch sử câu hỏi – trả lời – điểm số** và sinh **báo cáo tổng kết**.  
