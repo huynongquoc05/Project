@@ -98,9 +98,9 @@ Quá trình sẽ dừng lại khi một trong các điều kiện sau xảy ra:
 
 Khi kết thúc, hệ thống tổng hợp toàn bộ **lịch sử câu hỏi – trả lời – điểm số** và sinh **báo cáo tổng kết**.  
 
-### 📑 Ví dụ kết quả phỏng vấn (JSON)
-
-```json
+Ví dụ kết quả phỏng vấn và Flow tổng thể
+📑 Ví dụ kết quả phỏng vấn (JSON)
+Dưới đây là một ví dụ về kết quả phỏng vấn được lưu dưới dạng JSON:
 {
   "_id": {
     "$oid": "68d46d430b751e74de781162"
@@ -143,12 +143,9 @@ Khi kết thúc, hệ thống tổng hợp toàn bộ **lịch sử câu hỏi �
     }
   ]
 }
-'''
 
+🔄 Flow tổng thể (State Machine)
 
-### 🔄 Flow tổng thể (State Machine)
-
-```mermaid
 stateDiagram-v2
     [*] --> LoadProfile: Bắt đầu
     LoadProfile --> ClassifyLevel: Lấy hồ sơ từ FAISS
@@ -168,5 +165,3 @@ stateDiagram-v2
     CheckEnd --> GenerateSummary: Nếu đã đủ điều kiện dừng
     
     GenerateSummary --> [*]
-
-
