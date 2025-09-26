@@ -98,6 +98,53 @@ Quá trình sẽ dừng lại khi một trong các điều kiện sau xảy ra:
 
 Khi kết thúc, hệ thống tổng hợp toàn bộ **lịch sử câu hỏi – trả lời – điểm số** và sinh **báo cáo tổng kết**.  
 
+### 📑 Ví dụ kết quả phỏng vấn (JSON)
+
+```json
+{
+  "_id": {
+    "$oid": "68d46d430b751e74de781162"
+  },
+  "candidate_info": {
+    "name": "Phạm Văn Nam,QTKD2",
+    "profile": "Họ tên: Phạm Văn Nam, Lớp: QTKD2, Chuyên ngành: Marketing, Điểm chuyên cần: 6.4, Điểm 40%: 4.8, ",
+    "classified_level": "yeu"
+  },
+  "interview_stats": {
+    "timestamp": "2025-09-25T05:14:27.017412",
+    "total_questions": 3,
+    "final_score": 10,
+    "topic": "Kiểu dữ liệu trong Java"
+  },
+  "question_history": [
+    {
+      "question_number": 1,
+      "difficulty": "very_easy",
+      "question": "Trong Java, có bao nhiêu kiểu dữ liệu cơ sở?",
+      "answer": "Có 8 kiểu dữ liệu cơ sở trong java để lưu trữ các giá trị số nguyên, số thực, ký tự, đúng /sai. Thông tin thêm về kiểu dữ liệu cơ sở:\n-) Là kiểu dữ liệu đơn giản nhất trong Java. \n-) Tại một thời điểm, một kiểu dữ liệu cơ sở chỉ lưu trữ một giá trị đơn, không có các thông tin khác",
+      "score": 10,
+      "analysis": "Câu trả lời chính xác số lượng kiểu dữ liệu cơ sở (8) và phân loại đúng mục đích sử dụng của chúng (số nguyên, số thực, ký tự, đúng/sai). Ngoài ra, câu trả lời còn cung cấp thông tin bổ sung rất tốt về đặc điểm của kiểu dữ liệu cơ sở, thể hiện sự hiểu biết sâu sắc hơn về chủ đề này, phù hợp hoàn toàn với tài liệu tham khảo."
+    },
+    {
+      "question_number": 2,
+      "difficulty": "easy",
+      "question": "Trong Java, bạn muốn khai báo một biến để lưu trữ giá trị nhiệt độ là `25.5`. Kiểu dữ liệu nào sẽ được sử dụng mặc định cho giá trị `25.5` này? Nếu bạn muốn lưu trữ giá trị này dưới dạng kiểu `float`, bạn sẽ khai báo nó như thế nào trong mã Java?",
+      "answer": "Khiểu dữ liệu mặc định của Java cho giá trị này là double, nếu muốn khai báo dưới dạng kiểu float, cần thêm hậu tố \"f\" hoặc \"F\":\nfloat nhietDo=25.5f",
+      "score": 10,
+      "analysis": "Câu trả lời hoàn toàn chính xác và đầy đủ. Thí sinh đã nêu đúng kiểu dữ liệu mặc định cho số có dấu phẩy động là `double` và cách khai báo một giá trị `float` bằng cách thêm hậu tố `f` hoặc `F`, kèm theo một ví dụ mã rõ ràng. Điều này khớp hoàn toàn với tài liệu tham khảo."
+    },
+    {
+      "question_number": 3,
+      "difficulty": "medium",
+      "question": "Trong Java, bạn có thể lưu trữ một số nguyên bằng cả kiểu dữ liệu cơ sở (`int`) và lớp gói (`Integer`). Hãy giải thích sự khác biệt cơ bản giữa `int` và `Integer`, và trong những tình huống ứng dụng thực tế nào bạn sẽ ưu tiên sử dụng `Integer` thay vì `int`?",
+      "answer": "Trong Java, int là kiểu dữ liệu nguyên thủy (primitive type) với kích thước 32 bit, lưu trực tiếp giá trị số nguyên trong bộ nhớ, rất hiệu quả về tốc độ và bộ nhớ. Trong khi đó, Integer là lớp bao (Wrapper class) gói int thành một đối tượng, nhờ đó có thêm nhiều phương thức tiện ích như parseInt(), toHexString(), hoặc khả năng làm việc với các cấu trúc dữ liệu yêu cầu đối tượng (ví dụ ArrayList<Integer>). Điểm khác biệt quan trọng là int không thể lưu giá trị null, trong khi Integer có thể, nên phù hợp trong trường hợp cần biểu diễn dữ liệu có thể thiếu hoặc chưa xác định. Trong thực tế, bạn sẽ dùng int cho các phép tính số học cơ bản để đạt hiệu năng cao, còn dùng Integer khi cần tận dụng các phương thức hỗ trợ, cần làm việc với generic collection, hoặc cần giá trị null để thể hiện trạng thái đặc biệt",
+      "score": 10,
+      "analysis": "Câu trả lời hoàn toàn chính xác và đầy đủ. Thí sinh đã giải thích rõ ràng sự khác biệt cơ bản giữa `int` (kiểu nguyên thủy, hiệu quả về tốc độ và bộ nhớ, không thể null) và `Integer` (lớp gói, đối tượng, có phương thức tiện ích, có thể null, cần cho generic collection). Các tình huống ứng dụng thực tế được nêu ra cũng rất phù hợp và chính xác, thể hiện sự hiểu biết sâu sắc về cách sử dụng từng kiểu dữ liệu trong Java. Câu trả lời khớp hoàn toàn với tài liệu tham khảo và mở rộng thêm các kiến thức quan trọng."
+    }
+  ]
+}
+
+
 
 ### 🔄 Flow tổng thể (State Machine)
 
