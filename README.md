@@ -50,30 +50,6 @@ Chương trình **AI interviewer** tự động, dùng kiến thức từ vector
 
 ---
 
-### 🔄 Flow tổng thể (State Machine)
-
-```mermaid
-stateDiagram-v2
-    [*] --> LoadProfile: Bắt đầu
-    LoadProfile --> ClassifyLevel: Lấy hồ sơ từ FAISS
-    ClassifyLevel --> InitDifficulty: Xác định level thí sinh + độ khó ban đầu
-    InitDifficulty --> AskQuestion
-    
-    state AskQuestion {
-        [*] --> GenerateQ
-        GenerateQ --> WaitAnswer: Sinh câu hỏi theo topic + độ khó
-        WaitAnswer --> EvaluateAnswer: Nhận câu trả lời từ thí sinh
-        EvaluateAnswer --> DecideAction: LLM chấm điểm + phân tích
-        DecideAction --> UpdateState
-    }
-    
-    UpdateState --> CheckEnd: Cập nhật số lần hỏi, độ khó mới
-    CheckEnd --> AskQuestion: Nếu chưa kết thúc
-    CheckEnd --> GenerateSummary: Nếu đã đủ điều kiện dừng
-    
-    GenerateSummary --> [*]
-
-
 ### 🏗️ Ý nghĩa trạng thái & cách vận hành
 
 **Level của thí sinh (`InterviewState.level`)**
@@ -121,3 +97,29 @@ Quá trình sẽ dừng lại khi một trong các điều kiện sau xảy ra:
    - Có thể nhấn `Ctrl + C` để kết thúc sớm.  
 
 Khi kết thúc, hệ thống tổng hợp toàn bộ **lịch sử câu hỏi – trả lời – điểm số** và sinh **báo cáo tổng kết**.  
+
+
+### 🔄 Flow tổng thể (State Machine)
+
+```mermaid
+stateDiagram-v2
+    [*] --> LoadProfile: Bắt đầu
+    LoadProfile --> ClassifyLevel: Lấy hồ sơ từ FAISS
+    ClassifyLevel --> InitDifficulty: Xác định level thí sinh + độ khó ban đầu
+    InitDifficulty --> AskQuestion
+    
+    state AskQuestion {
+        [*] --> GenerateQ
+        GenerateQ --> WaitAnswer: Sinh câu hỏi theo topic + độ khó
+        WaitAnswer --> EvaluateAnswer: Nhận câu trả lời từ thí sinh
+        EvaluateAnswer --> DecideAction: LLM chấm điểm + phân tích
+        DecideAction --> UpdateState
+    }
+    
+    UpdateState --> CheckEnd: Cập nhật số lần hỏi, độ khó mới
+    CheckEnd --> AskQuestion: Nếu chưa kết thúc
+    CheckEnd --> GenerateSummary: Nếu đã đủ điều kiện dừng
+    
+    GenerateSummary --> [*]
+
+
